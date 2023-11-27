@@ -31,7 +31,7 @@ timer = 5
 counter_interval = 1000   #1000 represents 1 second
 timer_up = False
 
-leaderboard_file_name = "a122_leaderboard2.txt"
+leaderboard_file_name = "a122_leaderboard.txt"
 player_name = input("Please enter your name")
 
 #-----initialize turtle-----
@@ -75,7 +75,7 @@ def countdown():
 def manage_leaderboard():
 
   global score
-  global spot
+  global jack
 
   # get the names and scores from the leaderboard file
   leader_names_list = lb.get_names(leaderboard_file_name)
@@ -84,10 +84,10 @@ def manage_leaderboard():
   # show the leaderboard with or without the current player
   if (len(leader_scores_list) < 5 or score >= leader_scores_list[4]):
     lb.update_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list, player_name, score)
-    lb.draw_leaderboard(True, leader_names_list, leader_scores_list, spot, score)
+    lb.draw_leaderboard(True, leader_names_list, leader_scores_list, jack, score)
 
   else:
-    lb.draw_leaderboard(False, leader_names_list, leader_scores_list, spot, score)
+    lb.draw_leaderboard(False, leader_names_list, leader_scores_list, jack, score)
 
 #-----events----------------
 wn = trtl.Screen()
