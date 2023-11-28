@@ -1,4 +1,5 @@
-Jack,12
+Jack,7
 Michael,8
-William,13
+William,4
 Jill,6
+Bob,2
