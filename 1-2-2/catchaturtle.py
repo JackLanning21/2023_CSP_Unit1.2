@@ -27,7 +27,7 @@ counter.pendown()
 counter.hideturtle()
 
 font_setup = ("Arial", 20, "normal")
-timer = 5
+timer = 30
 counter_interval = 1000   #1000 represents 1 second
 timer_up = False
 
@@ -82,7 +82,7 @@ def manage_leaderboard():
   leader_scores_list = lb.get_scores(leaderboard_file_name)
 
   # show the leaderboard with or without the current player
-  if (len(leader_scores_list) < 5 or score >= leader_scores_list[4]):
+  if (len(leader_scores_list)) < 5 or score >= (leader_scores_list[4]):
     lb.update_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list, player_name, score)
     lb.draw_leaderboard(True, leader_names_list, leader_scores_list, jack, score)
 
