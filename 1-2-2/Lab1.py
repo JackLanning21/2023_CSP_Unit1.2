@@ -8,7 +8,7 @@ lines = trtl.Turtle()
 wn = trtl.Screen()
 Startx = -490
 Starty = -300
-Endx = 540
+Endx = 490
 Endy = -300
 lines.speed(200)
 
@@ -42,11 +42,11 @@ def v80():
     lines.penup()
     lines.goto(Startx,Starty)
     lines.pendown()
-    for x in range(100):
+    for x in range(50):
         lines.goto(Endx, Endy)
         lines.goto(Startx, Starty)
-        Startx += 9.999
-        Endy += 9.85
+        Startx += 10.88888
+        Endy += 7
 
 # Code for the 90 point version goes here
 def v90():
@@ -57,16 +57,14 @@ def v90():
     global Endx
     global Endy
     lines.penup()
-    lines.goto(Endx, Endy)
+    lines.goto(-Startx, Starty)
     lines.pendown()
-    for x in range(100):
+    Endy -= 638
+    for x in range(90):
         lines.goto(Startx, Starty)
-        lines.goto(Endx, Endy)
-        Startx += 9.999
-        Endy += 9.85
-
-
-
+        lines.goto(-Endx, Endy)
+        Startx -= 10.8888
+        Endy += 7
 
 # Code for the 100 point version here
 def v100():

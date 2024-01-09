@@ -19,13 +19,13 @@ def drawTriangle(long, x ,y):
     test.right(120)
     test.fd(long)
 
-x = 100
-y = 100
+path_width = 100
+wall_length = 100
 length = 43
 for tri in range(100):
-    drawTriangle(length, x, y)
-    x += length * 1.25
-    y += length * 1.25
+    drawTriangle(length, path_width, wall_length)
+    path_width += length * 1.25
+    wall_length += length * 1.25
     length += 1
 wn = trtl.Screen()
 wn.mainloop()

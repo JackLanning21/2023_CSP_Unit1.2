@@ -1,7 +1,7 @@
 #Stage 1
-x = ""
+path_width = ""
 space = str("xxxxxx")
-x = 5
+path_width = 5
 
 def rightPyramid():
    for lines in range(6):
