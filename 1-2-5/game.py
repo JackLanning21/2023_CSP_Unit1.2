@@ -34,12 +34,15 @@ start.write("Press SPACE to play", align='center', font=("Arial", 25, 'bold'))
 
 x = 0
 y = 100
-i = 0
+i = 1
 def cb():
     global current_block, x, y, i
     current_block.showturtle()
-    current_block.speed(0)
-    current_block.goto(0,-400)
+    current_block.speed(2)
+
+def drop():
+    current_block.goto(0, -400)
+
 
 def change_background():
     wn.bgpic("tetris_mainUP2.gif")
@@ -53,11 +56,25 @@ def change_background():
 
 wn.onkeypress(change_background,"space")
 
+
 Blocks = [IBlock, TBlock, ZBlock, OBlock]
 index = rand.randint(0,len(Blocks)-1)
 current_block = (Blocks[index])
 
-wn = trtl.Screen()
-wn.setup(width=1.0, height=1.0)
-wn.bgpic("tetris_backgroundUP.gif")
+def move_left():
+    global x
+    x -= 10
+    current_block.goto(x,y)
+
+def move_right():
+    global x
+    x += 10
+    current_block.goto(x,y)
+
+wn.onkeypress(move_left,"a")
+wn.onkeypress(move_right,"d")
+wn.onkeypress(drop, "s")
+wn.listen()
+
+wn.listen()
 wn.mainloop()
