@@ -10,6 +10,12 @@ wn.addshape("Z-Block.gif")
 
 start = trtl.Turtle()
 drawer = trtl.Turtle()
+scoreboard = trtl.Turtle()
+scoreboard.hideturtle()
+scoreboard.penup()
+scoreboard.pencolor("Blue")
+scoreboard.goto(280,420)
+scoreboard.pendown()
 drawer.speed(200)
 drawer.hideturtle()
 IBlock = trtl.Turtle("I-Block.gif")
@@ -38,40 +44,70 @@ Blocks = [IBlock, TBlock, ZBlock, OBlock]
 x = 0
 y = 100
 i = 1
+score = ""
+hidden_score = 0
+
+
 def cb():
-    global current_block, x, y, i, Blocks
+    global current_block, x, y, i, Blocks, index, scoreboard, score, hidden_score
+    x = 0
     index = rand.randint(0, len(Blocks) - 1)
     current_block = (Blocks[index])
     current_block.showturtle()
     current_block.speed(2)
+def points():
+    global hidden_score
+    scoreboard.write(score, font=("Arial", 35, 'bold'))
+    if hidden_score == 4:
+        scoreboard.speed(0)
+        scoreboard.penup()
+        scoreboard.goto(-300,0)
+        scoreboard.pendown()
+        scoreboard.write("YOU WIN", font=("Times New Roman", 100, 'bold'))
+    if Blocks == []:
+        if hidden_score < 4:
+            scoreboard.speed(0)
+            scoreboard.penup()
+            scoreboard.goto(-350,0)
+            scoreboard.pendown()
+            scoreboard.write("YOU FAILED", font=("Times New Roman", 100, 'bold'))
 
-score = 0
 
 def drop():
-    global x, score
+    global x, score, Blocks, index, hidden_score
     current_block.goto(x, -400)
+
     if current_block == OBlock:
         if x >= -200 and x <= -90:
-            score += 1
+            score += "/  "
+            hidden_score += 1
         current_block.hideturtle()
-        cb()
+        Blocks.pop(index)
 
     if current_block == IBlock:
         if x >= -90 and x <= 20:
-            score += 1
+            score += "/  "
+            hidden_score += 1
         current_block.hideturtle()
-        cb()
+        Blocks.pop(index)
 
     if current_block == TBlock:
         if x >= 20 and x <= 130:
-            score += 1
+            score += "/  "
+            hidden_score += 1
         current_block.hideturtle()
-        cb()
+        Blocks.pop(index)
+
     if current_block == ZBlock:
         if x >= 130 and x <= 250:
-            score += 1
+            score += "/  "
+            hidden_score += 1
         current_block.hideturtle()
-        cb()
+        Blocks.pop(index)
+    points()
+    cb()
+
+
 
 def change_background():
     wn.bgpic("tetris_mainUP2.gif")
@@ -137,6 +173,8 @@ def move_right():
     global x
     x += 10
     current_block.goto(x,y)
+
+
 
 wn.onkeypress(move_left,"a")
 wn.onkeypress(move_right,"d")
